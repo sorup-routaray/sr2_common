@@ -31,11 +31,13 @@ public class PDFUtility {
 			String loFilePath = targetFilePath + targetFileName;
 			outputStream = new FileOutputStream(loFilePath);
 			File fopConf = new File(xsltFilePath);
-			FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
+			//FopFactory fopFactory = FopFactory.newInstance(new File("C:\\Users\\m1032091\\Work\\Mindtree\\Learning\\doc_generation_folder\\fop_conf.xml").toURI());
+			FopFactory fopFactory = FopFactory.newInstance(new File("C:/Users/m1032091/Work/Mindtree/Learning/doc_generation_folder/fop_conf.xml"));
 			FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 			
 			Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, outputStream);
-			TransformerFactory factory = TransformerFactory.newInstance();
+			//TransformerFactory factory = TransformerFactory.newInstance();
+			TransformerFactory factory = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl",null);
 			Transformer transformer = factory.newTransformer(new StreamSource(fopConf));
 			Result res = new SAXResult(fop.getDefaultHandler());
 			transformer.transform(xmlSource, res);
@@ -45,4 +47,6 @@ public class PDFUtility {
 			FileUtility.closeSilently(outputStream);
 		}
 	}
+	
+	
 }
