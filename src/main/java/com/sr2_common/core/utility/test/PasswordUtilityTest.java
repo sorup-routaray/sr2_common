@@ -10,11 +10,12 @@ public class PasswordUtilityTest {
 	public static void main(String[] args) {
 		passwordGenerationTest();
 		textEncodingAndDecodingtest();
-		System.out.println(PasswordUtility.decodeBase64String(" I1AqWUUwYjJsOUt1SyRXQDJUNmY="));
+		System.out.println(PasswordUtility.decodeBase64String("MuRBiB&9j!*92VTPyyKk"));
+		System.out.println("MuRBiB&9j!*92VTPyyKk");
 	}
 
 	private static void textEncodingAndDecodingtest() {
-		String plaintext = "sorup";
+		String plaintext = "password";
 		String encodetoBase64 = PasswordUtility.encodetoBase64String(plaintext);
 		String decodeBase64String = PasswordUtility.decodeBase64String(encodetoBase64);
 		System.out.println("Original Text : " + plaintext);
